@@ -1,14 +1,27 @@
 import React from 'react';
-import {  NavLink } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import {  Link, NavLink } from 'react-router-dom';
+import auth from '../firebase.init';
 
 const Navbar = ({children}) => {
+  const [user] = useAuthState(auth);
+
+  const logout = () => {
+      signOut(auth);
+      localStorage.removeItem('accessToken');
+  };
+
     let navItems = <>
         <li><NavLink to='/'  className='rounded-lg'>Home</NavLink></li>
-        <li><NavLink to='/purchase'  className='rounded-lg'>Purchase</NavLink></li>
+        {
+            user && <li><NavLink to='/purchase'  className='rounded-lg'>Purchase</NavLink></li>
+        }
+        
         <li><NavLink to='/dashboard' className='rounded-lg'>Dashboard</NavLink></li>
         <li><NavLink to='/blogs' className='rounded-lg'>Blogs</NavLink></li>
-        <li><NavLink to='/login' className='rounded-lg'>Login</NavLink></li>
-        
+       
+        <li>{user ? <button className="btn btn-ghost rounded-lg" onClick={logout} >Sign Out</button> : <Link to="/login" className='rounded-lg'>Login</Link>}</li>
     </>
 
 
