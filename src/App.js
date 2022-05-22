@@ -9,7 +9,7 @@ import NotFound from './Shared/NotFound';
 
 function App() {
   return (
-    <div className='max-w-7xl mx-auto lg:px-12'>
+    <div className=''>
       <Navbar>
         <Routes>
           <Route path='/' element={<Home></Home>}></Route>

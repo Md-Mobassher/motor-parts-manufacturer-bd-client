@@ -7,7 +7,7 @@ const useToken = (user) => {
         const currentUser = {email: email}
 
         if(email){
-            fetch(` `,{
+            fetch(`http://localhost:5000/user/${email}`,{
                 method: 'PUT',
                 headers: {
                     "content-type" : "application/json"
@@ -17,7 +17,7 @@ const useToken = (user) => {
             .then(res=> res.json())
             .then(data=> {
                 const accessToken = data.token;
-                localStorage.setItem("accestoken", accessToken);
+                localStorage.setItem("accessToken", accessToken);
                 setToken(accessToken);
             })
         }

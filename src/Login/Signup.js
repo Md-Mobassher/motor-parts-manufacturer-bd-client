@@ -43,16 +43,16 @@ const Signup = () => {
         console.log('update done');
     }
     return (
-        <div className='flex h-screen justify-center items-center mt-5'>
+        <div className='flex justify-center items-center mt-14'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-center text-2xl font-bold">Sign Up</h2>
+                    <h2 className="text-center text-2xl font-bold mb-5">Sign Up</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div className="form-control w-full max-w-xs">
-                            <label className="label">
+                            {/* <label className="label">
                                 <span className="label-text">Name</span>
-                            </label>
+                            </label> */}
                             <input
                                 type="text"
                                 placeholder="Your Name"
@@ -70,9 +70,6 @@ const Signup = () => {
                         </div>
 
                         <div className="form-control w-full max-w-xs">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
                             <input
                                 type="email"
                                 placeholder="Your Email"
@@ -94,9 +91,6 @@ const Signup = () => {
                             </label>
                         </div>
                         <div className="form-control w-full max-w-xs">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
                             <input
                                 type="password"
                                 placeholder="Password"

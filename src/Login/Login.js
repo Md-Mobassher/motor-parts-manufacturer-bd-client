@@ -44,16 +44,13 @@ const Login = () => {
 
 
     return (
-        <div className='flex h-screen justify-center items-center'>
-            <div className="card w-96 bg-base-100 shadow-xl">
+        <div className='flex justify-center items-center mt-20'>
+            <div className="card w-96 bg-base-100 shadow-lg">
                 <div className="card-body">
-                    <h2 className="text-center text-2xl font-bold">Please Login</h2>
+                    <h2 className="text-center text-2xl font-bold mb-5">Please Login</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div className="form-control w-full max-w-xs">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
                             <input
                                 type="email"
                                 placeholder="Your Email"
@@ -75,9 +72,6 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-control w-full max-w-xs">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
                             <input
                                 type="password"
                                 placeholder="Password"
