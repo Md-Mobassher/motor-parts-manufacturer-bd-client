@@ -1,10 +1,10 @@
 import React from 'react';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import auth from '../firebase.init';
 
-const Navbar = ({children}) => {
+const Navbar = () => {
   const [user] = useAuthState(auth);
 
   const logout = () => {
@@ -12,50 +12,47 @@ const Navbar = ({children}) => {
       localStorage.removeItem('accessToken');
   };
 
-    let navItems = <>
+    const navItems = <>
         <li><NavLink to='/'  className='rounded-lg'>Home</NavLink></li>
         {
+            user && <li><NavLink to='/dashboard' className='rounded-lg'>Dashboard</NavLink></li>
+        } 
+        {
             user && <li><NavLink to='/purchase'  className='rounded-lg'>Purchase</NavLink></li>
-        }
+        }  
+        {
+            user && <li><NavLink to='/myorder'  className='rounded-lg'>My Orders</NavLink></li>
+        }   
+         
         
-        <li><NavLink to='/dashboard' className='rounded-lg'>Dashboard</NavLink></li>
         <li><NavLink to='/blogs' className='rounded-lg'>Blogs</NavLink></li>
-       
+        <li><NavLink to='/about' className='rounded-lg'>About</NavLink></li>
+
         <li>{user ? <button className="btn btn-ghost rounded-lg" onClick={logout} >Sign Out</button> : <NavLink to="/login" className='btn btn-ghost rounded-lg'>Login</NavLink>}</li>
     </>
 
 
     return ( 
-       <section >
-          <div className=" drawer drawer-end ">
-            <input id="my-drawer-3" type="checkbox" className="drawer-toggle" /> 
-            <div className="drawer-content flex flex-col">
-    
-              <div className="w-full navbar shadow-sm bg-base-100 fixed top-0 z-50 lg:px-20">
-              <div className="flex-1 px-2 mx-2 text-2xl font-semibold ">Motor Parts BD</div>
-                <div className="flex-none lg:hidden">
-                  <label for="my-drawer-3" className="btn btn-square btn-ghost ">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                  </label>
-                </div> 
-                
-                <div className="flex-none hidden lg:block">
-                  <ul className="menu menu-horizontal ">
-                        {navItems}
-                  </ul>
-                </div>
+       <section className='relative z-10'>
+         <div className="navbar bg-base-100 fixed top-0">
+            <div className="navbar">
+                <Link to='/' className="flex-1 px-2 mx-2 text-2xl font-semibold ">Motor Parts BD</Link>
+                <div className=" hidden lg:flex">
+                  <ul className="menu menu-horizontal p-0">
+                      {navItems}
+                  </ul>  
               </div>
-
-          {children}
-            </div> 
-            <div className="drawer-side">
-              <label for="my-drawer-3" className="drawer-overlay"></label> 
-              <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
-                    {navItems}
-              </ul>
-              
+              <div className="dropdown dropdown-end flex-end block lg:hidden">
+                    <label tabIndex="0" className="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
+                    <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        {navItems}
+                    </ul>
+                </div>
             </div>
-          </div>
+        </div>
+          
        </section>
     );
 };
