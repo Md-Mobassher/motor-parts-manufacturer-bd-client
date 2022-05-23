@@ -34,8 +34,8 @@ const Navbar = () => {
 
     return ( 
        <section className='relative z-10'>
-         <div className="navbar px-16 mx-auto bg-base-100 fixed top-0">
-            <div className="navbar ">
+         <div className="navbar px-16 mx-auto shadow-sm bg-base-100 fixed top-0">
+            <div className="navbar  ">
                 <Link to='/' className="flex-1 px-2 mx-2 text-2xl font-semibold ">Motor Parts BD</Link>
                 <div className=" hidden lg:flex">
                   <ul className="menu menu-horizontal p-0">
