@@ -13,20 +13,23 @@ import NotFound from './Shared/NotFound';
 function App() {
   return (
     <div className=''>
-      <Navbar></Navbar>
-      <Routes>
-          <Route path='/' element={<Home></Home>}></Route>
-          <Route path='myorder' element={<RequireAuth><MyOrder /></RequireAuth>}></Route>
-          <Route path='blogs' element={<Blogs></Blogs>}></Route>
-          <Route path='signup' element={<Signup></Signup>}></Route>
-          <Route path='login' element={<Login></Login>}></Route>
+      <Navbar>
+        <Routes>
+            <Route path='/' element={<Home></Home>}></Route>
+            <Route path='myorder' element={<RequireAuth><MyOrder /></RequireAuth>}></Route>
+            <Route path='blogs' element={<Blogs></Blogs>}></Route>
+            <Route path='signup' element={<Signup></Signup>}></Route>
+            <Route path='login' element={<Login></Login>}></Route>
 
 
-          <Route path='*' element={<NotFound></NotFound>}></Route>
-        </Routes>
+            <Route path='*' element={<NotFound></NotFound>}></Route>
+          </Routes>
+          <Footer></Footer>
+      </Navbar>
+      
 
 
-        <Footer></Footer>
+        
       
     </div>
   );
