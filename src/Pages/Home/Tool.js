@@ -5,7 +5,7 @@ const Tool = ({tool}) => {
     const {_id, name, img, description, price, quantity, } = tool;
     const navigate = useNavigate();
 
-    const navigateToInventoryDetail = id =>{
+    const navigateToPurchaseTool = id =>{
         navigate(`/purchase/${id}`);
     }
     return (
@@ -21,7 +21,7 @@ const Tool = ({tool}) => {
                         <p className='font-semibold'> </p>
                     </div>
                     <div class="card-actions justify-end items-end mt-3">
-                    <div  onClick={() => navigateToInventoryDetail(_id)}  class=" btn  btn-success badge badge-outline ">Buy Now</div> 
+                    <div  onClick={() => navigateToPurchaseTool(_id)}  class=" btn  btn-success badge badge-outline ">Buy Now</div> 
                     </div>
                 </div>
         </div>
