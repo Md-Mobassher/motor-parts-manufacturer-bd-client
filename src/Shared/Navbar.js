@@ -36,7 +36,7 @@ const Navbar = ({children}) => {
                 <input id="my-drawer-3" type="checkbox" className="drawer-toggle" /> 
                 <div className="drawer-content flex flex-col">
                  
-                    <div className="w-full navbar lg:px-20 bg-base-100 sticky top-0 z-50 shadow-sm">
+                    <div className="w-full navbar lg:px-20 bg-base-100 sticky top-0 z-50 shadow-lg">
                          <Link to='/' className="flex-1 px-2 mx-2 text-2xl font-semibold ">Motor Parts BD</Link>
                         <div className="flex-none lg:hidden">
                             <label for="my-drawer-3" className="btn btn-square btn-ghost">

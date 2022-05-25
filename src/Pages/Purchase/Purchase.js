@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import useTool from '../../Hooks/useTool';
 
+
 const Purchase = () => {
     const {toolId} = useParams();
     const tool = useTool(toolId);
@@ -14,10 +15,20 @@ const Purchase = () => {
 
     return (
         <section>
-           <div class="card lg:card-side bg-base-100 shadow-xl">
-                <figure><img src={tool.img} alt="Album"/></figure>
-                <div class="card-body">
-                    <h2>Name: {tool.name}</h2>
+           <div class="card bg-base-200 w-4/5 my-20 mx-auto p-10 bg-base-100 shadow-xl flex">
+                <div className='w-1/2'>
+                    <img src={tool.img} alt="" />
+                </div>
+                <div class=" w-1/2">
+                     <h2 class="card-title">Name : {tool.name}</h2>
+                      <p> Description : {tool.description}</p>
+                    <div>
+                        <p className='text-xl font-semibold py-2'>Unit Price: <span className='text-accent font-bold'> $ {tool.price}</span> </p>
+                        <p  className='font-semibold mb-1'><span>Minimum Order:</span> {50} Pices </p>
+                        <p  className='font-semibold'>Available Quantity: {tool.quantity}</p>
+                        <p className='font-semibold'> </p>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -50,11 +61,9 @@ const Purchase = () => {
                          </div>
                          
                       
-                        <input className='btn btn-white mx-auto block' type="submit" />
+                        <input className='btn btn-white mx-auto block' type="submit" value='Order Now'/>
                     </form>
 
-                    
-              
             </div>
         </section>
     );
