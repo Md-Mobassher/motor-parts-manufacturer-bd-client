@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 import Login from './Login/Login';
 import RequireAuth from './Login/RequireAuth';
 import Signup from './Login/Signup';

@@ -9,8 +9,8 @@ const Tool = ({tool}) => {
         navigate(`/purchase/${id}`);
     }
     return (
-        <div class="card bg-base-100 shadow-xl">
-                <figure><img src={img} alt="tool" /></figure>
+        <div class="card bg-base-100 shadow-xl ">
+                <figure><img className='p-5' src={img} alt="tool" /></figure>
                 <div class=" p-4">
                     <h2 class="card-title">{name}<div class=" ml-auto badge badge-secondary">NEW</div></h2>
                     <p>{description.slice(0,60)}</p>
