@@ -9,7 +9,7 @@ const Purchase = () => {
     const tool = useTool(toolId);
     console.log(tool)
 
-    const { register, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = data => console.log(data);
     
 

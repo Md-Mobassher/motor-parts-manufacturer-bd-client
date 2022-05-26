@@ -11,12 +11,12 @@ import Purchase from './Pages/Purchase/Purchase';
 import Footer from './Shared/Footer';
 import Users from './Pages/Dashboard/Users'
 import Navbar from './Shared/Navbar';
-import NotFound from './Shared/NotFound';
 import AddProduct from './Pages/Dashboard/AddProduct';
 import MyProfile from './Pages/Dashboard/MyProfile';
 import AddReview from './Pages/Dashboard/AddReview';
 import ManageProduct from './Pages/Dashboard/ManageProduct';
 import { ToastContainer } from 'react-toastify';
+import NotFound from './Shared/NotFound';
 
 function App() {
   return (

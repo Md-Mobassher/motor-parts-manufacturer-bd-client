@@ -6,7 +6,7 @@ import auth from '../../firebase.init';
 
 const MyProfile = () => {
     const [ user ] = useAuthState(auth)
-    const { register, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
     const onSubmit = async data => {
         fetch('http://localhost:5000/user', {
@@ -21,7 +21,7 @@ const MyProfile = () => {
         .then(inserted =>{
             if(inserted.insertedId){
                 toast.success('You Profile Updated successfully')
-                data.reset();
+                reset();
             }
             else{
                 toast.error('Failed to Update Your Profile');
@@ -57,7 +57,7 @@ const MyProfile = () => {
                     </div>
                     
                     
-                    <input className='btn btn-white mx-auto block' type="submit" value='Order Now'/>
+                    <input className='btn btn-white mx-auto block' type="submit" value='Update Profile'/>
                 </form>
 
             </div>
