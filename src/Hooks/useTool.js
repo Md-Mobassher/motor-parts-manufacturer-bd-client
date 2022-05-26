@@ -4,9 +4,13 @@ const useTool = (toolId) => {
     const [tool, setTool] = useState([]);
 
     useEffect(() => {
-        const url = `http://localhost:5000/tools/${toolId}`
-        console.log(url)
-        fetch(url)
+        fetch(`http://localhost:5000/tool/${toolId}`, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })    
         .then(res => res.json())
         .then(data => setTool(data));
     },[toolId])

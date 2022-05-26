@@ -1,15 +1,48 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const AddReview = () => {
-    const [ user ] = useAuthState(auth)
-    const { register, handleSubmit } = useForm();
+    const [ user ] = useAuthState(auth);
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const onSubmit = data => {
-        console.log(data)
+    
+    const onSubmit =  data => 
+    {
+      
+        const review = {
+            name: user?.displayName,
+            email: user?.email,
+            rating: data.target.value,
+            review: data.target.value,
+
+        }
+        console.log(review)
+
+                // send to database
+             fetch('http://localhost:5000/review', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    },
+                    body: JSON.stringify(review)
+                })
+                .then(res =>res.json())
+                .then(inserted =>{
+                    if(inserted.insertedId){
+                        toast.success('Review added successfully')
+                        reset();
+                    }
+                    else{
+                        toast.error('Failed to add Review');
+                    }
+                })
+ 
     }
+
 
     return (
         <div className='h-screen'>
@@ -17,22 +50,105 @@ const AddReview = () => {
             <div class="card bg-primary lg:w-3/5 mx-auto p-10 bg-base-100 shadow-xl">
             
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='flex justify-between items-center mb-4 w-full'>
-                    <h2 class=" w-1/3 inline ml-auto"> Your Name :</h2>
-                    <input class="w-2/3 input input-bordered" value={user?.displayName} placeholder=' Your Name' disabled required {...register("user", { required: true,  })} />
-                </div>
-                <div className='flex justify-between items-center mb-4 w-full'>
-                    <h2 class=" w-1/3 inline ml-auto">Your Email:</h2>
-                    <input class="w-2/3 input input-bordered" value={user?.email} placeholder='Your email' disabled required {...register("email", { required: true, })} />
-                </div>
-                <div className='flex justify-between items-center mb-4 w-full'>
-                    <h2 class=" w-1/3 inline ml-auto">Write a Review :</h2>
-                    <textarea class="w-2/3 textarea textarea-info" placeholder='Add Review' {...register("review", { required: true, maxLength: 300 })} />
-                </div>
-                
-                
-                <input className='btn btn-red mx-auto block' type="submit" value='Add Review'/>
-            </form>
+                        <div className="form-control  mb-2 w-full ">
+                         
+                                <label className="label ">
+                                    <h2 className="label-text font-semibold">Your Name :</h2>
+                                </label>
+                            
+                                 <input
+                                    type="name"
+                                    value={user?.displayName}
+                                    placeholder="Product Name"
+                                    className="input input-bordered w-full"
+                                    disabled
+                                    {...register("user", {
+                                        required: {
+                                            value: true,
+                                            message: 'User Name is Required'
+                                        },
+                                    })}
+                                />
+
+                        </div>
+
+
+                        <div className="form-control mb-2 w-full ">
+                                <label className="label ">
+                                    <h2 className="label-text font-semibold">Your Email :</h2>
+                                </label>
+                            <input
+                                type="email"
+                                value={user?.email}
+                                disabled
+                                placeholder="Your Email"
+                                className="input input-bordered w-full max-w-xs"
+                                {...register("email", {
+                                    required: {
+                                        value: true,
+                                        message: 'Email is Required'
+                                    },
+                                    pattern: {
+                                        value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                                        message: 'Provide a valid Email'
+                                    }
+                                })}
+                            />
+                           
+                        </div>
+
+                        <div className="form-control mb-2 w-full ">
+                             <label className="label ">
+                                <h2 className="label-text font-semibold">Enter a Rating:</h2>
+                            </label>
+                            <input
+                                type="number"
+                                placeholder="Enter a Rating here"
+                                className="input input-bordered w-full"
+                                {...register("rating", {
+                                    required: {
+                                        value: true,
+                                        message: 'Rating is Required'
+
+                                    },
+                                    pattern: {
+                                       value:1,
+                                        message: ' Minimum At least 1'
+                                    },
+                                  
+                                })}
+                            />
+                            <label className="label">
+                                {errors.rating?.type === 'required' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
+                                {errors.rating?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
+                                {errors.rating?.type === 'maxLength' && <span className="label-text-alt text-red-500">{errors.rating.message}</span>}
+                            </label>
+                        </div>
+
+                        <div className="form-control mb-2 w-full ">
+                             <label className="label ">
+                                <h2 className="label-text font-semibold">Write a Review :</h2>
+                            </label>
+                            <textarea
+                                type="text"
+                                placeholder="Write a Review"
+                                className="textarea textarea-bordered w-full"
+                                {...register("review", {
+                                    required: {
+                                        value: true,
+                                        message: 'Review is Required'
+                                    },
+                                })}
+                            />
+                            <label className="label">
+                                {errors.review?.type === 'required' && <span className="label-text-alt text-red-500">{errors.review.message}</span>}
+
+                            </label>
+                        </div>
+
+                        
+                        <input className='btn btn-white mx-auto block' type="submit" value='Add Review'/>
+                </form>
 
         </div>
     </div>
