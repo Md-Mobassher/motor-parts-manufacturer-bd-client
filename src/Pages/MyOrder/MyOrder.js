@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import React from 'react';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
 
 
 const MyOrder = () => {
-    const [user] = useAuthState(auth)
+   
 
     const { data: orders, isLoading, refetch } = useQuery('tools', () => fetch('http://localhost:5000/order', {
         headers: {

@@ -18,6 +18,7 @@ import AddReview from './Pages/Dashboard/AddReview';
 import ManageProduct from './Pages/Dashboard/ManageProduct';
 import { ToastContainer } from 'react-toastify';
 import NotFound from './Shared/NotFound';
+import About from './Pages/About/About';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
               <Route  path='users' element={<Users></Users>}></Route>
             </Route>
             <Route path='blogs' element={<Blogs></Blogs>}></Route>
+            <Route path='about' element={<About></About>}></Route>
             <Route path='signup' element={<Signup></Signup>}></Route>
             <Route path='login' element={<Login></Login>}></Route>
 

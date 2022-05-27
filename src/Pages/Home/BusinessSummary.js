@@ -6,8 +6,8 @@ import { FaPeopleCarry } from 'react-icons/fa';
 
 const BusinessSummary = () => {
     return (
-        <section className='px-20'>
-            <h2 className='text-3xl font-bold text-center my-20'>Business Summary</h2>
+        <section className='px-20 my-24'>
+            <h2 className='text-3xl font-bold text-center mb-16'>Business Summary</h2>
             <div className='grid grid-cols-1 lg:grid-cols-4 gap-5'>
                 <div className='flex flex-col  items-center  shadow-lg rounded-lg p-5'>
                     <p><FaFlagUsa  className='w-12 h-12 text-secondary' /></p>

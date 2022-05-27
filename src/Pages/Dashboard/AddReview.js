@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
@@ -8,15 +9,16 @@ const AddReview = () => {
     const [ user ] = useAuthState(auth);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    
-    const onSubmit =  data => 
-    {
-      
-        const review = {
-            name: user?.displayName,
-            email: user?.email,
-            rating: data.target.value,
-            review: data.target.value,
+    const { data: review, isLoading } = useQuery('review', () => fetch('http://localhost:5000/review').then(res => res.json()))
+ 
+
+    const handleReview =  data => 
+        {
+             const review = {
+                name: user?.displayName,
+                email: user?.email,
+                rating: data.rating.target.value,
+                review: data.review.target.value,
 
         }
         console.log(review)
@@ -49,7 +51,7 @@ const AddReview = () => {
         <h2 className='text-2xl font-bold text-center mb-8 text-purple-500'>Add a Review</h2>
             <div class="card bg-primary lg:w-3/5 mx-auto p-10 bg-base-100 shadow-xl">
             
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleReview}>
                         <div className="form-control  mb-2 w-full ">
                          
                                 <label className="label ">
@@ -102,6 +104,7 @@ const AddReview = () => {
                                 <h2 className="label-text font-semibold">Enter a Rating:</h2>
                             </label>
                             <input
+                                name='rating'
                                 type="number"
                                 placeholder="Enter a Rating here"
                                 className="input input-bordered w-full"
@@ -111,9 +114,13 @@ const AddReview = () => {
                                         message: 'Rating is Required'
 
                                     },
-                                    pattern: {
-                                       value:1,
-                                        message: ' Minimum At least 1'
+                                    minLength: {
+                                       min:1,
+                                        message: ' Minimum value At least 1'
+                                    },
+                                    maxLength: {
+                                       max:5,
+                                        message: ' Maximum value At least 5'
                                     },
                                   
                                 })}
@@ -130,6 +137,7 @@ const AddReview = () => {
                                 <h2 className="label-text font-semibold">Write a Review :</h2>
                             </label>
                             <textarea
+                                name='review'
                                 type="text"
                                 placeholder="Write a Review"
                                 className="textarea textarea-bordered w-full"
