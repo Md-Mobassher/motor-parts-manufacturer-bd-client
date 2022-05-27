@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import useTool from '../../Hooks/useTool';
@@ -15,6 +15,7 @@ const Purchase = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     
+    const navigate = useNavigate()
 
     const handlePlaceOrder = event =>{
         event.preventDefault();
@@ -43,6 +44,7 @@ const Purchase = () => {
                     if(inserted.insertedId){
                         toast.success('Item Ordered successfully')
                         reset();
+                        navigate('/myorder')
                     }
                     else{
                         toast.error('Failed to Ordered Item');
