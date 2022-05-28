@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading';
 
 
 const MyOrder = () => {
-   
+   const [user] = useAuthState(auth);
+   const email = user?.email;
 
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://hidden-bayou-51780.herokuapp.com/order', {
-        headers: {
-            authorization: `Bearer ${localStorage.getItem('accessToken')}`
-        }
-    }).then(res => res.json()));
+   const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/order', {
+    method: 'GET',
+    headers:{
+        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+    }
+   }).then(res => res.json()));
 
+   if (isLoading) {
+    return <Loading></Loading>
+   }
 
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to Cancel?');
         if(proceed){
-            fetch(`https://hidden-bayou-51780.herokuapp.com/order/${id}`, {
+            fetch(`http://localhost:5000/order/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -41,7 +48,7 @@ const MyOrder = () => {
 
     return (
         <div className='lg:w-4/5 mx-auto'>
-            <h2 className="text-2xl text-center mt-5 mb-4">Manage Orders</h2>
+            <h2 className="text-2xl text-center mt-5 mb-4">My Orders</h2>
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>

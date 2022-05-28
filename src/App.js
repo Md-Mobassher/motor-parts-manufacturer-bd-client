@@ -19,6 +19,7 @@ import ManageProduct from './Pages/Dashboard/ManageProduct';
 import { ToastContainer } from 'react-toastify';
 import NotFound from './Shared/NotFound';
 import About from './Pages/About/About';
+import ManageAllOrders from './Pages/Dashboard/ManageAllOrders';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               <Route  path='addproduct' element={<AddProduct></AddProduct>}></Route>
               <Route  path='addreview' element={<AddReview></AddReview>}></Route>
               <Route  path='manageproduct' element={<ManageProduct></ManageProduct>}></Route>
+              <Route  path='manageorder' element={<ManageAllOrders></ManageAllOrders>}></Route>
               <Route  path='users' element={<Users></Users>}></Route>
             </Route>
             <Route path='blogs' element={<Blogs></Blogs>}></Route>

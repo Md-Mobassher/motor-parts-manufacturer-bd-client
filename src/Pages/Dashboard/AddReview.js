@@ -8,6 +8,7 @@ import Loading from '../../Shared/Loading';
 
 const AddReview = () => {
     const [ user ] = useAuthState(auth);
+    console.log(user)
     const { register, formState: { errors }, reset } = useForm();
 
     const { data: reviews, isLoading } = useQuery('reviews', () => fetch('https://hidden-bayou-51780.herokuapp.com/review').then(res => res.json()))
@@ -17,6 +18,7 @@ const AddReview = () => {
         event.preventDefault();
              const review = {
                 name: user?.displayName,
+                img: user?.photoURL,
                 email: user?.email,
                 rating: event.target.rating.value,
                 review: event.target.review.value

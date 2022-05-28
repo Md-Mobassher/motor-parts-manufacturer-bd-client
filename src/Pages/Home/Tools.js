@@ -7,7 +7,15 @@ const Tools = () => {
     const [tools, setTools] = useState([]);
     
     useEffect( () =>{
-        fetch('https://hidden-bayou-51780.herokuapp.com/tool')
+        fetch('https://hidden-bayou-51780.herokuapp.com/tool',{
+            
+                method: 'GET',
+                        headers: {
+                            'content-type': 'application/json',
+                           
+                        },
+            
+        })      
         .then(res => res.json())
         .then(data => setTools(data));
     }, []);

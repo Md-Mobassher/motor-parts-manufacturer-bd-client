@@ -3,6 +3,7 @@ import React from 'react';
 const GetQuote = () => {
     return (
         <div className='my-20 mx-auto  w-4/6'>
+            <h2 className='text-3xl font-bold text-center mb-16'>Get Quote</h2>
                 <div class="card w-75 bg-base-100 shadow-2xl">
                     <div class="lg:p-10 p-5 lg:flex justify-between items-center">
                         <div className='my-4'>
