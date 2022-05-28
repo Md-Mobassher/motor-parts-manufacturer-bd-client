@@ -8,7 +8,7 @@ import Loading from '../../Shared/Loading';
 const MyOrder = () => {
    
 
-    const { data: orders, isLoading, refetch } = useQuery('tools', () => fetch('https://hidden-bayou-51780.herokuapp.com/order', {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://hidden-bayou-51780.herokuapp.com/order', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -16,7 +16,7 @@ const MyOrder = () => {
 
 
     const handleDelete = (id) => {
-        const proceed = window.confirm('Are you sure you want to delete?');
+        const proceed = window.confirm('Are you sure you want to Cancel?');
         if(proceed){
             fetch(`https://hidden-bayou-51780.herokuapp.com/order/${id}`, {
             method: 'DELETE',
@@ -28,7 +28,7 @@ const MyOrder = () => {
             .then(data => {
                 console.log(data);
                 if (data.deletedCount) {
-                    toast(`Order is deleted successfully.`)
+                    toast(`Order is Canceled successfully.`)
                     refetch()
                 }
             })

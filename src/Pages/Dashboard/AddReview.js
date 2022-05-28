@@ -4,22 +4,22 @@ import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import Loading from '../../Shared/Loading';
 
 const AddReview = () => {
     const [ user ] = useAuthState(auth);
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const { register, formState: { errors }, reset } = useForm();
 
-    const { data: review, isLoading } = useQuery('review', () => fetch('https://hidden-bayou-51780.herokuapp.com/review').then(res => res.json()))
+    const { data: reviews, isLoading } = useQuery('reviews', () => fetch('https://hidden-bayou-51780.herokuapp.com/review').then(res => res.json()))
  
 
-    const handleReview =  data => 
-        {
+    const handleReview =  event => {
+        event.preventDefault();
              const review = {
                 name: user?.displayName,
                 email: user?.email,
-                rating: data.rating.target.value,
-                review: data.review.target.value,
-
+                rating: event.target.rating.value,
+                review: event.target.review.value
         }
         console.log(review)
 
@@ -45,6 +45,9 @@ const AddReview = () => {
  
     }
 
+    if(isLoading){
+        <Loading></Loading>
+    }
 
     return (
         <div className='h-screen'>

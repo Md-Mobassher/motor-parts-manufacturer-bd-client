@@ -1,10 +1,12 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import useTool from '../../Hooks/useTool';
+import Loading from '../../Shared/Loading';
 
 
 const Purchase = () => {
@@ -16,6 +18,8 @@ const Purchase = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     
     const navigate = useNavigate()
+
+    const { data: order, isLoading } = useQuery('reviews', () => fetch('https://hidden-bayou-51780.herokuapp.com/order').then(res => res.json()))
 
     const handlePlaceOrder = event =>{
         event.preventDefault();
@@ -50,8 +54,12 @@ const Purchase = () => {
                         toast.error('Failed to Ordered Item');
                     }
                 })
-   
     }
+
+    if(isLoading){
+        <Loading></Loading>
+    }
+
 
     return (
         <section>

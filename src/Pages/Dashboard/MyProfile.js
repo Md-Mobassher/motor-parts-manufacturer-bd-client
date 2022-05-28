@@ -1,24 +1,31 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import Loading from '../../Shared/Loading';
 
 const MyProfile = () => {
     const [ user ] = useAuthState(auth)
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const { register, formState: { errors },isLoading,  reset } = useForm();
 
-    const handleUpdateUser = async data => {
-        data.preventDefault();
+
+    const handleUpdateUser = event => {
+        event.preventDefault();
+
+        const email = user?.email;
+        console.log(email)
+         
         const updateUser = {
             user: user?.displayName,
             email:user?.email,
-            phone: data.target.phone.value,
-            address: data.target.address.value,
-            linkedin: data.target.linkedin.value
+            phone: event.target.phone.value,
+            address: event.target.address.value,
+            linkedin: event.target.linkedin.value
         }
         console.log(updateUser)
-        fetch('https://hidden-bayou-51780.herokuapp.com/user', {
+        fetch(`https://hidden-bayou-51780.herokuapp.com/user/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -36,6 +43,10 @@ const MyProfile = () => {
                 toast.error('Failed to Update Your Profile');
             }
         })
+    }
+
+    if(isLoading){
+        <Loading></Loading>
     }
 
     return (
@@ -60,10 +71,11 @@ const MyProfile = () => {
                         <h2 class=" w-1/3 inline ml-auto">Address :</h2>
                         <input name='address' class="w-2/3 input input-bordered" placeholder='Address' {...register("address",  { required: true, })} />
                     </div>
+                    
                     <div className='flex justify-between items-center mb-4 w-full'>
-                        <h2 class=" w-1/3 inline ml-auto">Linkedin Profile Link :</h2>
-                        <input name='linkedin' class="w-2/3 input input-bordered" placeholder='Linkedin profile' {...register("likedin", { required: true, maxLength: 20 })} />
-                    </div>
+                            <h2 class=" w-1/3 inline ml-auto">Linkedin Profile Link :</h2>
+                            <input name='linkedin' class="w-2/3 input input-bordered" placeholder='Linkedin profile' {...register("likedin", { required: true })} />
+                         </div>
                     
                     
                     <input className='btn btn-white mx-auto block' type="submit" value='Update Profile'/>

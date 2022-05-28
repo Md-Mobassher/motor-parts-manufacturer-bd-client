@@ -23,7 +23,7 @@ const useAdmin = user => {
             })
         }
     }, [user])
-    console.log(admin)
+
 
     return [admin, adminLoading]
 }
