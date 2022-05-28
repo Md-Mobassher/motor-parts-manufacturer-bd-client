@@ -11,7 +11,7 @@ const MyOrder = () => {
    const [user] = useAuthState(auth);
    const email = user?.email;
 
-   const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/order', {
+   const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://hidden-bayou-51780.herokuapp.com/order', {
     method: 'GET',
     headers:{
         authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -25,7 +25,7 @@ const MyOrder = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to Cancel?');
         if(proceed){
-            fetch(`http://localhost:5000/order/${id}`, {
+            fetch(`https://hidden-bayou-51780.herokuapp.com/order/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -49,8 +49,8 @@ const MyOrder = () => {
     return (
         <div className='lg:w-4/5 mx-auto'>
             <h2 className="text-2xl text-center mt-5 mb-4">My Orders</h2>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>

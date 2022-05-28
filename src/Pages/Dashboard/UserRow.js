@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 const UserRow = ({ user, refetch }) => {
     console.log(user)
     const { email, role } = user;
+
     const makeAdmin = () => {
         fetch(`https://hidden-bayou-51780.herokuapp.com/user/admin/${email}`, {
             method: 'PUT',
@@ -24,12 +25,34 @@ const UserRow = ({ user, refetch }) => {
 
             })
     }
+
+    const removeUser = () => {
+        const proced = window.confirm("Are you sure you want to delete the user")
+       if(proced){
+        fetch(`https://hidden-bayou-51780.herokuapp.com/user/${email}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount) {
+                    toast(`User is deleted successfully.`)
+                    refetch();
+                }
+            })
+       }
+    }
+  
+
     return (
         <tr>
             <th>*</th>
             <td>{email}</td>
-            <td>{role !== 'admin' && <button onClick={makeAdmin} class="btn btn-xs btn-primary">Make Admin</button>}</td>
-            <td><button class="btn btn-xs btn-error">Remove User</button></td>
+            <td>{role !== 'admin' && <button onClick={makeAdmin} className="btn btn-xs btn-primary">Make Admin</button>}</td>
+            <td><button onClick={removeUser} className="btn btn-xs btn-error">Remove User</button></td>
         </tr>
     );
 };

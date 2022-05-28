@@ -11,15 +11,15 @@ const Dashboard = () => {
 
     return (
         <section className='h-screen'>
-            <div class="drawer drawer-mobile  ">
-            <input id="dashboard-sidebar" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content  mt-8 ml-6">
+            <div className="drawer drawer-mobile  ">
+            <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content  mt-8 ml-6">
                 
                 <Outlet></Outlet>
             </div>
-            <div class="drawer-side shadow-xl">
-                <label for="dashboard-sidebar" class="drawer-overlay"></label>
-                <ul class="menu p-5 h-full w-48   text-base-content">
+            <div className="drawer-side shadow-xl">
+                <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
+                <ul className="menu p-5 h-full w-48   text-base-content">
                     
                     <li><Link to="/dashboard">My Profile</Link></li>
                     { 

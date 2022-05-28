@@ -5,7 +5,7 @@ import OrderRow from './OrderRow';
 
 
 const ManageAllOrders = () => {
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/order', {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://hidden-bayou-51780.herokuapp.com/order', {
         method: 'GET',
         headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -20,8 +20,8 @@ const ManageAllOrders = () => {
     return (
         <div>
             <h2 className="text-2xl">All Orders: {orders.length}</h2>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>

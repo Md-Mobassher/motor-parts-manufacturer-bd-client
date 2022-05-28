@@ -9,10 +9,10 @@ const Tool = ({tool}) => {
         navigate(`/purchase/${id}`);
     }
     return (
-        <div class="card bg-base-100 shadow-xl ">
+        <div className="card bg-base-100 shadow-xl ">
                 <figure><img className='p-5' src={img} alt="tool" /></figure>
-                <div class=" p-4">
-                    <h2 class="card-title">{name}<div class=" ml-auto badge badge-secondary">NEW</div></h2>
+                <div className=" p-4">
+                    <h2 className="card-title">{name}<div className=" ml-auto badge badge-secondary">NEW</div></h2>
                     <p>{description.slice(0,60)}</p>
                     <div>
                         <p className='text-xl font-semibold py-2'>Unit Price: <span className='text-accent font-bold'> $ {price}</span> </p>
@@ -20,8 +20,8 @@ const Tool = ({tool}) => {
                         <p  className='font-semibold'>Available Quantity: {quantity}</p>
                         <p className='font-semibold'> </p>
                     </div>
-                    <div class="card-actions justify-end items-end mt-3">
-                    <div  onClick={() => navigateToPurchaseTool(_id)}  class=" btn  btn-success badge badge-outline ">Buy Now</div> 
+                    <div className="card-actions justify-end items-end mt-3">
+                    <div  onClick={() => navigateToPurchaseTool(_id)}  className=" btn  btn-success badge badge-outline ">Buy Now</div> 
                     </div>
                 </div>
         </div>

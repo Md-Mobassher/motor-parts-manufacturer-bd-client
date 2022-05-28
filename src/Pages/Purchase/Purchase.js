@@ -64,12 +64,12 @@ const Purchase = () => {
     return (
         <section>
             <h1 className='text-center text-4xl mt-10 font-semibold'>Purchase Details</h1>
-           <div class="card  lg:w-4/5 my-20 mx-auto lg:p-10 shadow-2xl lg:flex-row justify-center items-center">
+           <div className="card  lg:w-4/5 my-20 mx-auto lg:p-10 shadow-2xl lg:flex-row justify-center items-center">
                 <div className='w-1/2'>
                     <img src={img} alt="" />
                 </div>
-                <div class=" w-1/2">
-                     <h2 class="card-title">Name : {name}</h2>
+                <div className=" w-1/2">
+                     <h2 className="card-title">Name : {name}</h2>
                       <p> Description : {description}</p>
                     <div>
                         <p className='text-xl font-semibold py-2'>Unit Price: <span className='text-accent font-bold'> $ {price}</span> </p>
@@ -81,32 +81,32 @@ const Purchase = () => {
                 </div>
             </div>
 
-            <div class="card bg-primary lg:w-3/5 mx-auto p-10 bg-base-100 shadow-xl">
+            <div className="card bg-primary lg:w-3/5 mx-auto p-10 bg-base-100 shadow-xl">
                
                      <form onSubmit={handlePlaceOrder}>
                          <div className='flex justify-between items-center mb-4 w-full'>
-                            <h2 class=" w-1/3 inline ml-auto">Product Name :</h2>
-                            <input  class="w-2/3 input input-bordered" value= {name}placeholder='Product Name' disabled {...register("product", { required: true, maxLength: 20 })} />
+                            <h2 className=" w-1/3 inline ml-auto">Product Name :</h2>
+                            <input  className="w-2/3 input input-bordered" value= {name}placeholder='Product Name' disabled {...register("product", { required: true, maxLength: 20 })} />
                          </div>
                          <div className='flex justify-between items-center mb-4 w-full'>
-                            <h2 class=" w-1/3 inline ml-auto">Product Quantity :</h2>
-                            <input name='quantity' class="w-2/3 input input-bordered" placeholder='Product Quantity' {...register("quantity", { required: true, maxLength: 20 })} />
+                            <h2 className=" w-1/3 inline ml-auto">Product Quantity :</h2>
+                            <input name='quantity' className="w-2/3 input input-bordered" placeholder='Product Quantity' {...register("quantity", { required: true, maxLength: 20 })} />
                          </div>
                          <div className='flex justify-between items-center mb-4 w-full'>
-                            <h2 class=" w-1/3 inline ml-auto">User Name :</h2>
-                            <input class="w-2/3 input input-bordered" value={user?.displayName} placeholder='User Name' disabled {...register("user", { required: true, maxLength: 20 })} />
+                            <h2 className=" w-1/3 inline ml-auto">User Name :</h2>
+                            <input className="w-2/3 input input-bordered" value={user?.displayName} placeholder='User Name' disabled {...register("user", { required: true, maxLength: 20 })} />
                          </div>
                          <div className='flex justify-between items-center mb-4 w-full'>
-                            <h2 class=" w-1/3 inline ml-auto">User email : </h2>
-                            <input class="w-2/3 input input-bordered" value={user?.email} placeholder='Email' disabled {...register("email", { required: true, })} />
+                            <h2 className=" w-1/3 inline ml-auto">User email : </h2>
+                            <input className="w-2/3 input input-bordered" value={user?.email} placeholder='Email' disabled {...register("email", { required: true, })} />
                          </div>
                          <div className='flex justify-between items-center mb-4 w-full'>
-                            <h2 class=" w-1/3 inline ml-auto">Phone Number :</h2>
-                            <input name='phone' class="w-2/3 input input-bordered" placeholder='Phone Number' {...register("phone", { required: true, maxLength: 20 })} />
+                            <h2 className=" w-1/3 inline ml-auto">Phone Number :</h2>
+                            <input name='phone' className="w-2/3 input input-bordered" placeholder='Phone Number' {...register("phone", { required: true, maxLength: 20 })} />
                          </div>
                          <div className='flex justify-between items-center mb-4 w-full'>
-                            <h2 class=" w-1/3 inline ml-auto">Address :</h2>
-                            <input name='address' class="w-2/3 input input-bordered" placeholder='Address' {...register("address", { required: true, maxLength: 20 })} />
+                            <h2 className=" w-1/3 inline ml-auto">Address :</h2>
+                            <input name='address' className="w-2/3 input input-bordered" placeholder='Address' {...register("address", { required: true, maxLength: 20 })} />
                          </div>
                          
                       

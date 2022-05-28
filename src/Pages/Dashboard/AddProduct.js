@@ -71,7 +71,7 @@ const AddProduct = () => {
     return (
         <div className='h-screen'>
             <h2 className='text-2xl font-bold text-center mb-8 text-purple-500'>Add Item Here </h2>
-                <div class="card bg-primary lg:w-3/5 mx-auto p-10 bg-base-100 shadow-xl">
+                <div className="card bg-primary lg:w-3/5 mx-auto p-10 bg-base-100 shadow-xl">
                 
                 <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control  mb-0 w-full ">

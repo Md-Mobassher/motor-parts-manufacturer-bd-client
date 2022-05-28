@@ -30,8 +30,8 @@ const OrderRow = ({ order, refetch }) => {
             <td>{item}</td>
             <td>{quantity}</td>
             <td>{email}</td>
-            <td>{<button  class="btn btn-xs btn-primary">Unpaid</button>}</td>
-            <td>{role !== 'admin' && <button onClick={handleShiped} class="btn btn-xs btn-primary">Shipped</button>}</td>
+            <td>{<button  className="btn btn-xs btn-primary">Unpaid</button>}</td>
+            <td>{role !== 'admin' && <button onClick={handleShiped} className="btn btn-xs btn-primary">Shipped</button>}</td>
             
         </tr>
     );
