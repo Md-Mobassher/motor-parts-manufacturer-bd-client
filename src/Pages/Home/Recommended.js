@@ -5,15 +5,15 @@ const Recommended = () => {
     return (
         <section>
             <h2 className='text-3xl font-bold text-center my-20'>Discount Offer</h2>
-            <div className=" mt-5  flex justify-center items-center p-5">
+            <div className=" card w-75 bg-base-100 shadow-2xl w-4/5 mx-auto flex justify-center items-center p-10">
                 <div className="col-md-5 col-sm-12">
-                    <div className='text-center text-success fw-bold fst-italic'>
-                        <h2>Special Discount For All</h2>
-                        <h2>Grocery Products</h2>
-                        <p className='mt-4'>There is a big opportunity for all of our customers. If you buy any grocery items in our shop, you will get maximum 40% discount because of the Eid-Ul-Fitor.   </p>
-                        <p>Happy Shopping</p>
+                    <div className='text-center  fw-bold fst-italic'>
+                        <h2 className='text-3xl  font-semibold mb-4'>Special Discount </h2>
+                        <h2 className='text-3xl  font-semibold mb-4'>For All Parts </h2>
+                        <p className='mt-5 font-semibold text-xl lg:px-16'>There is a big opportunity for all of our customers. If you buy any grocery items in our shop, you will get maximum 40% discount because of the Eid-Ul-Fitor.   </p>
+                        <p className='my-5 font-semibold text-xl'>Happy Shopping</p>
 
-                        <Link to='/' className='px-5 py-2 mt-3 rounded-pill fs-5' variant="success" type="submit">
+                        <Link to='/' className=" btn  btn-primary badge badge-outline mt-5" variant="success" type="submit">
                                 Shop Now
                         </Link>
                     </div>

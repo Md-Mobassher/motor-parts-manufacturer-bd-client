@@ -21,7 +21,7 @@ const Tool = ({tool}) => {
                         <p className='font-semibold'> </p>
                     </div>
                     <div className="card-actions justify-end items-end mt-3">
-                    <div  onClick={() => navigateToPurchaseTool(_id)}  className=" btn  btn-success badge badge-outline ">Buy Now</div> 
+                    <div  onClick={() => navigateToPurchaseTool(_id)}  className=" btn  btn-primary badge badge-outline ">Buy Now</div> 
                     </div>
                 </div>
         </div>
