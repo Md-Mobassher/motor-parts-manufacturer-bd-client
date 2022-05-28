@@ -10,7 +10,7 @@ const Recommended = () => {
                     <div className='text-center  fw-bold fst-italic'>
                         <h2 className='text-3xl  font-semibold mb-4'>Special Discount </h2>
                         <h2 className='text-3xl  font-semibold mb-4'>For All Parts </h2>
-                        <p className='mt-5 font-semibold text-xl lg:px-16'>There is a big opportunity for all of our customers. If you buy any grocery items in our shop, you will get maximum 40% discount because of the Eid-Ul-Fitor.   </p>
+                        <p className='mt-5 font-semibold text-xl lg:px-16'>There is a big opportunity for all of our customers. If you buy at least 10000 items, you will get maximum 30% discount.   </p>
                         <p className='my-5 font-semibold text-xl'>Happy Shopping</p>
 
                         <Link to='/' className=" btn  btn-primary badge badge-outline mt-5" variant="success" type="submit">
