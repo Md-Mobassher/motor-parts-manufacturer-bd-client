@@ -9,7 +9,7 @@ const AddReview = () => {
     const [ user ] = useAuthState(auth);
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: review, isLoading } = useQuery('review', () => fetch('http://localhost:5000/review').then(res => res.json()))
+    const { data: review, isLoading } = useQuery('review', () => fetch('https://hidden-bayou-51780.herokuapp.com/review').then(res => res.json()))
  
 
     const handleReview =  data => 
@@ -24,7 +24,7 @@ const AddReview = () => {
         console.log(review)
 
                 // send to database
-             fetch('http://localhost:5000/review', {
+             fetch('https://hidden-bayou-51780.herokuapp.com/review', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

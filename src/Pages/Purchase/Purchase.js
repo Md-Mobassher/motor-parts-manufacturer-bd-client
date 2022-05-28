@@ -31,7 +31,7 @@ const Purchase = () => {
             phone: event.target.phone.value
         }
    
-        fetch('http://localhost:5000/order', {
+        fetch('https://hidden-bayou-51780.herokuapp.com/order', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

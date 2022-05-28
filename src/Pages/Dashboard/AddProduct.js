@@ -10,7 +10,7 @@ const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
  
-    const { data: tool, isLoading } = useQuery('tool', () => fetch('http://localhost:5000/tool').then(res => res.json()))
+    const { data: tool, isLoading } = useQuery('tool', () => fetch('https://hidden-bayou-51780.herokuapp.com/tool').then(res => res.json()))
  
     const imageStorageKey='2cefe4cba91cd48a6540132ab05c3182';
 
@@ -36,7 +36,7 @@ const AddProduct = () => {
                 }
 
                      // send to your database
-                fetch('http://localhost:5000/tool', {
+                fetch('https://hidden-bayou-51780.herokuapp.com/tool', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

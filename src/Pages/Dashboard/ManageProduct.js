@@ -7,7 +7,7 @@ import ToolRow from './ToolRaw';
 const ManageProduct = () => {
     const [deletingTool, setDeletingTool] = useState(null);
 
-    const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch('http://localhost:5000/tool', {
+    const { data: tools, isLoading, refetch } = useQuery('tools', () => fetch('https://hidden-bayou-51780.herokuapp.com/tool', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

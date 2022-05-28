@@ -8,7 +8,7 @@ import Loading from '../../Shared/Loading';
 const MyOrder = () => {
    
 
-    const { data: orders, isLoading, refetch } = useQuery('tools', () => fetch('http://localhost:5000/order', {
+    const { data: orders, isLoading, refetch } = useQuery('tools', () => fetch('https://hidden-bayou-51780.herokuapp.com/order', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -18,7 +18,7 @@ const MyOrder = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to delete?');
         if(proceed){
-            fetch(`http://localhost:5000/order/${id}`, {
+            fetch(`https://hidden-bayou-51780.herokuapp.com/order/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -58,7 +58,7 @@ const MyOrder = () => {
                         {
                             orders?.map((order, index) => <tr key={order._id}>
                                 <th>{index + 1}</th>
-                                <td>{order.name}</td>
+                                <td>{order.item}</td>
                                 <td>{order.price}</td>
                                 <td>{order.quantity}</td>
                                

@@ -4,7 +4,7 @@ const useTool = (toolId) => {
     const [tool, setTool] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/tool/${toolId}`, {
+        fetch(`https://hidden-bayou-51780.herokuapp.com/tool/${toolId}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
