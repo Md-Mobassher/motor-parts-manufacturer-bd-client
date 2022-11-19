@@ -81,7 +81,7 @@ const Purchase = () => {
                 </div>
             </div>
 
-            <div className="card bg-primary lg:w-3/5 mx-auto p-10 bg-base-100 shadow-xl">
+            <div className="card bg-primary lg:w-3/5 mx-auto p-10  shadow-xl">
                
                      <form onSubmit={handlePlaceOrder}>
                          <div className='flex justify-between items-center mb-4 w-full'>

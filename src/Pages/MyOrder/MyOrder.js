@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
@@ -58,7 +58,7 @@ const MyOrder = () => {
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Pay</th>
-                            <th>Delete</th>
+                            <th>Cancel Order</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,7 +77,7 @@ const MyOrder = () => {
                                     </div>}
                                 </td>
                                 <td>
-                                   <button onClick={() => handleDelete(order._id)} className='btn btn-xs btn-danger'>Delete</button>
+                                   <button onClick={() => handleDelete(order._id)} className='btn btn-xs bg-neutral'>Cancel</button>
                                </td>
                             </tr>)
                         }
