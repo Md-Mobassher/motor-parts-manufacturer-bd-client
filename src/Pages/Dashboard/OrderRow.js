@@ -5,7 +5,7 @@ const OrderRow = ({ order, refetch }) => {
     
     const { payment,quantity, email, item, role } = order;
     const handleShiped = () => {
-        fetch(`https://hidden-bayou-51780.herokuapp.com/user/admin/${email}`, {
+        fetch(`https://motor-parts-server-lvsq.onrender.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

@@ -4,7 +4,7 @@ const useTool = (toolId) => {
     const [tool, setTool] = useState([]);
 
     useEffect(() => {
-        fetch(`https://hidden-bayou-51780.herokuapp.com/tool/${toolId}`, {
+        fetch(`https://motor-parts-server-lvsq.onrender.com/tool/${toolId}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',

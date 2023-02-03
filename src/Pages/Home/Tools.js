@@ -7,12 +7,12 @@ const Tools = () => {
     const [tools, setTools] = useState([]);
     
     useEffect( () =>{
-        fetch('https://hidden-bayou-51780.herokuapp.com/tool',{
+        fetch('https://motor-parts-server-lvsq.onrender.com/tool',{
             
                 method: 'GET',
                         headers: {
                             'content-type': 'application/json',
-                           
+                            
                         },
             
         })      

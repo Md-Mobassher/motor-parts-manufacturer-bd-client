@@ -19,7 +19,7 @@ const Purchase = () => {
     
     const navigate = useNavigate()
 
-    const { data: order, isLoading } = useQuery('reviews', () => fetch('https://hidden-bayou-51780.herokuapp.com/order').then(res => res.json()))
+    const { data:  isLoading } = useQuery('reviews', () => fetch('https://motor-parts-server-lvsq.onrender.com/order').then(res => res.json()))
 
     const handlePlaceOrder = event =>{
         event.preventDefault();
@@ -35,7 +35,7 @@ const Purchase = () => {
             phone: event.target.phone.value
         }
    
-        fetch('https://hidden-bayou-51780.herokuapp.com/order', {
+        fetch('https://motor-parts-server-lvsq.onrender.com/order', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

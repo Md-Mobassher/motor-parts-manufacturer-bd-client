@@ -11,12 +11,14 @@ const MyOrder = () => {
    const [user] = useAuthState(auth);
    const email = user?.email;
 
-   const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://hidden-bayou-51780.herokuapp.com/order', {
+   const { data: order, isLoading, refetch } = useQuery('order', () => fetch(`https://motor-parts-server-lvsq.onrender.com/order/${email}`, {
     method: 'GET',
     headers:{
+        'content-type': 'application/json',
         authorization: `Bearer ${localStorage.getItem('accessToken')}`
     }
    }).then(res => res.json()));
+
 
    if (isLoading) {
     return <Loading></Loading>
@@ -25,9 +27,10 @@ const MyOrder = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure you want to Cancel?');
         if(proceed){
-            fetch(`https://hidden-bayou-51780.herokuapp.com/order/${id}`, {
+            fetch(`https://motor-parts-server-lvsq.onrender.com/order/${id}`, {
             method: 'DELETE',
             headers: {
+                'content-type': 'application/json',
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
@@ -63,7 +66,7 @@ const MyOrder = () => {
                     </thead>
                     <tbody>
                         {
-                            orders?.map((order, index) => <tr key={order._id}>
+                            order?.map((order, index) => <tr key={order._id}>
                                 <th>{index + 1}</th>
                                 <td>{order.item}</td>
                                 <td>{order.price}</td>

@@ -5,7 +5,7 @@ import OrderRow from './OrderRow';
 
 
 const ManageAllOrders = () => {
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://hidden-bayou-51780.herokuapp.com/order', {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch('https://motor-parts-server-lvsq.onrender.com/order', {
         method: 'GET',
         headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

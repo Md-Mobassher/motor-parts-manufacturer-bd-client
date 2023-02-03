@@ -6,7 +6,7 @@ const UserRow = ({ user, refetch }) => {
     const { email, role } = user;
 
     const makeAdmin = () => {
-        fetch(`https://hidden-bayou-51780.herokuapp.com/user/admin/${email}`, {
+        fetch(`https://motor-parts-server-lvsq.onrender.com/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -29,7 +29,7 @@ const UserRow = ({ user, refetch }) => {
     const removeUser = () => {
         const proced = window.confirm("Are you sure you want to delete the user")
        if(proced){
-        fetch(`https://hidden-bayou-51780.herokuapp.com/user/${email}`, {
+        fetch(`https://motor-parts-server-lvsq.onrender.com/user/${email}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`

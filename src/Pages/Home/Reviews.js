@@ -7,7 +7,7 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([])
     
     useEffect( () =>{
-        fetch(`https://hidden-bayou-51780.herokuapp.com/review`,{
+        fetch(`https://motor-parts-server-lvsq.onrender.com/review`,{
             
             method: 'GET',
                 headers: {

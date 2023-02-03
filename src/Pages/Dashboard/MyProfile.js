@@ -25,7 +25,7 @@ const MyProfile = () => {
             linkedin: event.target.linkedin.value
         }
         console.log(updateUser)
-        fetch(`https://hidden-bayou-51780.herokuapp.com/user/${email}`, {
+        fetch(`https://motor-parts-server-lvsq.onrender.com/user/${email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

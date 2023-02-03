@@ -11,7 +11,7 @@ const AddReview = () => {
     console.log(user)
     const { register, formState: { errors }, reset } = useForm();
 
-    const { data: reviews, isLoading } = useQuery('reviews', () => fetch('https://hidden-bayou-51780.herokuapp.com/review').then(res => res.json()))
+    const { data: reviews, isLoading } = useQuery('reviews', () => fetch('https://motor-parts-server-lvsq.onrender.com/review').then(res => res.json()))
  
 
     const handleReview =  event => {
@@ -26,7 +26,7 @@ const AddReview = () => {
         console.log(review)
 
                 // send to database
-             fetch('https://hidden-bayou-51780.herokuapp.com/review', {
+             fetch('https://motor-parts-server-lvsq.onrender.com/review', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
